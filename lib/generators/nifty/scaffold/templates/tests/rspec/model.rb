@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/<%= model_path.gsub(/\w+/, '..') %>/spec_helper'
 
 describe <%= class_name %> do
   it "should be valid" do

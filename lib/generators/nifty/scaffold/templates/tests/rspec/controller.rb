@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/<%= singular_name.gsub(/\w+/, '..') %>/spec_helper'
 
 describe <%= plural_class_name %>Controller do
   fixtures :all

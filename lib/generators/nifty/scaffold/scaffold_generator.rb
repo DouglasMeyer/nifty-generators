@@ -145,9 +145,7 @@ module Nifty
       end
 
       def table_name
-        if scaffold_name.include?('::') && @namespace_model
-          plural_name.gsub('/', '_')
-        end
+        class_name.underscore.pluralize.gsub('/', '_')
       end
 
       def class_name
