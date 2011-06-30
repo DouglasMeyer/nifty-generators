@@ -536,6 +536,17 @@ class TestNiftyScaffoldGenerator < Test::Unit::TestCase
       should_generate_file "app/views/admin/users/new.html.erb"
       should_generate_file "app/views/admin/users/edit.html.erb"
       should_generate_file "test/fixtures/users.yml"
+
+      context "and rspec specified" do
+        rails_generator :nifty_scaffold, "Admin::User", "name:string", :test_framework => :rspec
+
+        should "generate 'spec/controllers/admin/users_controller_spec.rb'" do
+          assert_generated_file "spec/controllers/admin/users_controller_spec.rb" do |body|
+            assert_match "'/../../spec_helper'", body
+            assert_match "describe Admin::UsersController", body
+          end
+        end
+      end
     end
 
     context "generator with namespaced model" do
